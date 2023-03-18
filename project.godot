@@ -1,0 +1,14 @@
+config_version=5
+
+[application]
+
+config/name="Websocket Lobby Demo Godot 4.0"
+config/description="This is a sample showing how the use WebSockets along with the Multiplayer API in Godot."
+run/main_scene="res://scene/main.tscn"
+config/features=PackedStringArray("4.0")
+config/icon="res://icon.png"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
