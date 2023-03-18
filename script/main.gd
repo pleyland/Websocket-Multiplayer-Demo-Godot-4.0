@@ -18,8 +18,7 @@ func _ready():
 	#warning-ignore-all:return_value_discarded
 	multiplayer.connect("peer_disconnected",Callable(self,"_peer_disconnected"))
 	multiplayer.connect("peer_connected",Callable(self,"_peer_connected"))
-	multiplayer.connect("connection_failed",Callable(self,"_close_network"))
-	multiplayer.connect("connected_to_server",Callable(self,"_connected"))
+	
 	$AcceptDialog.get_label().horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	$AcceptDialog.get_label().vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	# Set the player name according to the system username. Fallback to the path.
@@ -49,14 +48,14 @@ func stop_game():
 
 
 func _close_network():
-	"""
+	
 	if multiplayer.is_connected("server_disconnected",Callable(self,"_close_network")):
 		multiplayer.disconnect("server_disconnected",Callable(self,"_close_network"))
 	if multiplayer.is_connected("connection_failed",Callable(self,"_close_network")):
 		multiplayer.disconnect("connection_failed",Callable(self,"_close_network"))
 	if multiplayer.is_connected("connected_to_server",Callable(self,"_connected")):
 		multiplayer.disconnect("connected_to_server",Callable(self,"_connected"))
-	"""	
+	
 	
 	
 	
@@ -111,7 +110,8 @@ func _on_Connect_pressed():
 		OS.alert("Needs host to connect to")
 		return
 	multiplayerPeer.create_client(txt,DEF_PORT)
-	
+	multiplayer.connect("connection_failed",Callable(self,"_close_network"))
+	multiplayer.connect("connected_to_server",Callable(self,"_connected"))
 
 	multiplayer.set_multiplayer_peer(multiplayerPeer)
 	start_game()
