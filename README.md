@@ -1,12 +1,12 @@
 # WebSocket Multiplayer
 
-This is a sample showing how the use WebSockets along with the Multiplayer API in Godot.
+This is a sample showing how the use WebSockets along with the Multiplayer API in Godot 4.0
 
 Language: GDScript
 
 Renderer: GLES 2
 
-Check out this demo on the asset library: https://godotengine.org/asset-library/asset/540
+Updated by Pleyland
 
 ## Screenshots
 
